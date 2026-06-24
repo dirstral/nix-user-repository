@@ -9,22 +9,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "0ri3hm95cjqy54dg4161jf9icsybq01w5cpv4cvd148msyk2ym6s";
-    aarch64-linux = "0cgbcmxk4fvvba98khras3cczwncb1xz9v2yhxj5yd1g67ybna51";
-    x86_64-darwin = "098wmcfqmm7as6h3w4ramchbs9digdbgbp4bf5pdcnxaja6cpk9z";
-    aarch64-darwin = "1559pnhsq956ghklgl7v55zv983apkjfid0pp6pkqc0mal2dvg3b";
+    x86_64-linux = "1nkmyfz11jhpgizkvm3a9gig36yjiqfgi1g95ickrvm3nij3wwj2";
+    aarch64-linux = "1kx9h7xh7bscc7555lgwbifcxyn029a3wc90rh8423i2kbagwk06";
+    x86_64-darwin = "0ji22cqmaiyrl3lhms4j5mx5r98xy6xkfxvvh8xppaj4axgg765x";
+    aarch64-darwin = "18g45033calg6sjw33fyl6d7p3qp0glhm4zix0p8i575d55jikry";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/dirstral/dir2mcp/releases/download/v0.9.6/dir2mcp_0.9.6_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/dirstral/dir2mcp/releases/download/v0.9.6/dir2mcp_0.9.6_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/dirstral/dir2mcp/releases/download/v0.9.6/dir2mcp_0.9.6_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/dirstral/dir2mcp/releases/download/v0.9.6/dir2mcp_0.9.6_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/dirstral/dir2mcp/releases/download/v0.9.7/dir2mcp_0.9.7_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/dirstral/dir2mcp/releases/download/v0.9.7/dir2mcp_0.9.7_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/dirstral/dir2mcp/releases/download/v0.9.7/dir2mcp_0.9.7_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/dirstral/dir2mcp/releases/download/v0.9.7/dir2mcp_0.9.7_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "dir2mcp";
-  version = "0.9.6";
+  version = "0.9.7";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
