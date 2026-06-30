@@ -43,7 +43,7 @@ nix-build -E 'with import <nixpkgs> {}; callPackage ./pkgs/dir2mcp {}'
 ./result/bin/dir2mcp version   # smoke-check the fetched binary
 ```
 
-To check the file itself: `nix-instr` is not needed — `nix-build` will fail loudly on a
+To check the file itself: `nix-instantiate` is not needed — `nix-build` will fail loudly on a
 bad hash or dead URL. If a `sha256` is wrong, Nix prints the expected value.
 
 ## Working conventions
