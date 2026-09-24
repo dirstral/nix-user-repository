@@ -9,22 +9,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "0ja7qhr53fzqhpqmy5vg012mvqa02cph1yjdbs9m4ifbq5n930gb";
-    aarch64-linux = "1v863lzm3gzqazj2fwc0r71ljq3za4ndx1cgiknjnc7xargw10j0";
-    x86_64-darwin = "1mmj3yn941wqjkp2yr5ccc3m7ndlfjkx935z4m5kc32w9z6j6s49";
-    aarch64-darwin = "1ad0w5insksbh83a12msv2wb1mfm706a0r93271142r2ww2l1ra5";
+    x86_64-linux = "0jg7hdympfbcp2sgjk9pm7ivlqm7k95qp2ck1bih0xl20ha4cbhn";
+    aarch64-linux = "1r2rk0fn8kv67078f9582fyxg2fc6dz2ig1i4d69zmycnrwxri23";
+    x86_64-darwin = "1krgh388smgah05hhg60mgrap535fl6x053dc6fnpqadzxyxyi1h";
+    aarch64-darwin = "1mmyrcncm43ldfc313cccmhz1pa7kxv18mj4fk1pcr6l0y7mad2h";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/dirstral/dir2mcp/releases/download/v0.10.0/dir2mcp_0.10.0_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/dirstral/dir2mcp/releases/download/v0.10.0/dir2mcp_0.10.0_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/dirstral/dir2mcp/releases/download/v0.10.0/dir2mcp_0.10.0_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/dirstral/dir2mcp/releases/download/v0.10.0/dir2mcp_0.10.0_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/dirstral/dir2mcp/releases/download/v0.11.1/dir2mcp_0.11.1_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/dirstral/dir2mcp/releases/download/v0.11.1/dir2mcp_0.11.1_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/dirstral/dir2mcp/releases/download/v0.11.1/dir2mcp_0.11.1_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/dirstral/dir2mcp/releases/download/v0.11.1/dir2mcp_0.11.1_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "dir2mcp";
-  version = "0.10.0";
+  version = "0.11.1";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -35,8 +35,10 @@ stdenvNoCC.mkDerivation {
   nativeBuildInputs = [ installShellFiles ];
 
   installPhase = ''
+    runHook preInstall
     mkdir -p $out/bin
     cp -vr ./dir2mcp $out/bin/dir2mcp
+    runHook postInstall
   '';
 
   meta = {
